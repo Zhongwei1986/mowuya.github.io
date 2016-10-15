@@ -85,121 +85,19 @@
 
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+<div class="article-entry" itemprop="articleBody">
+  
+    
+    
+      <h3 id="1、FCC网站介绍"><a href="#1、FCC网站介绍" class="headerlink" title="1、FCC网站介绍"></a>1、FCC网站介绍</h3><p>大约2个月前，笔者在知乎上得知一个学习编程的网站 : <a href="https://freecodecamp.cn/" target="_blank" rel="external">FreeCodeCamp中文站</a>，<a href="https://freecodecamp.com/" target="_blank" rel="external">FreeCodeCamp英文站</a>。该网站起源于github的一个开源项目，采用关卡式学习方式，免费教授全栈开发技能。</p>
       
-        <h3 id="1、FCC网站介绍"><a href="#1、FCC网站介绍" class="headerlink" title="1、FCC网站介绍"></a>1、FCC网站介绍</h3><p>大约2个月前，笔者在知乎上得知一个学习编程的网站 : <a href="https://freecodecamp.cn/" target="_blank" rel="external">FreeCodeCamp中文站</a>，<a href="https://freecodecamp.com/" target="_blank" rel="external">FreeCodeCamp英文站</a>。该网站起源于github的一个开源项目，采用关卡式学习方式，免费教授全栈开发技能。</p>
-<ul>
-<li>下面是英文网站的简单介绍：</li>
-</ul>
-<p><img src="http://ocbao1wc2.bkt.clouddn.com/20161011suanfa_FCC-intro.jpg" alt="FCC简介"></p>
-<ul>
-<li>下图为通过此网站课程可获得的开发技能：</li>
-</ul>
-<p><img src="http://ocbao1wc2.bkt.clouddn.com/20161011suanfa_skills.jpg" alt="技能清单"></p>
-<h3 id="2、算法编程-Algorithm-Scripting"><a href="#2、算法编程-Algorithm-Scripting" class="headerlink" title="2、算法编程(Algorithm Scripting)"></a>2、算法编程(Algorithm Scripting)</h3><p>所谓算法编程 (Algorithm Scripting)，就是设计JS函数(function)来解各种算法题。</p>
-<p>下面是笔者刚完成的中级算法编程 (Intermediate Algorithm Scripting) 练习题：</p>
-<p><img src="http://ocbao1wc2.bkt.clouddn.com/20161011suanfa_algorithm.jpg" alt="中级算法题目列表"></p>
-<p>这些题目笔者做过两遍，做第一遍时，笔者对JS各种数据类型的方法和属性不甚了解，常常苦思冥想不得解，最后虽然题目都做完了，但是代码冗长且混乱。</p>
-<p>做第二遍的时候，笔者开始思考这些题目的更优的解法，反复琢磨Array,String,Object等数据类型的常用方法和属性，添加必要的注释，最后完成了第二遍练习，并将前后两次的代码整理到了印象笔记中。</p>
-<p><img src="http://ocbao1wc2.bkt.clouddn.com/20161011suanfa_yibxiangbiji.jpg" alt="印象笔记记录"></p>
-<p>下面贴出两道比较有意思的算法题。code1表示第一次的答案，code2表示第二次的答案。</p>
-<h4 id="1-Where-art-thou"><a href="#1-Where-art-thou" class="headerlink" title="1) Where art thou"></a>1) Where art thou</h4><blockquote>
-<p>一开始看到题目，笔者以为是FCC中文站翻译出错，应该是where are you，后来查了一下thou的意思，居然有”你”的意思。</p>
-</blockquote>
-<p>题目：</p>
-<p><img src="http://ocbao1wc2.bkt.clouddn.com/20161011suanfa_whereartthou.jpg" alt="Where art thou题目"></p>
-<p>code1：</p>
-<pre><code>function where(collection, source) {
-      var arr = [];
-     // What&apos;s in a name?
-     var sourArr = Object.keys(source);
-     for(var i =0, len1 = collection.length; i &lt; len1; i++) {
-           var num = 0;
-        for(var j = 0,len2 = sourArr.length; j &lt; len2; j++) {
-            if(!collection[i].hasOwnProperty(sourArr[j])){
-                break;
-             } else {
-                    if(collection[i][sourArr[j]] === source[sourArr[j]]) {
-                      num += 1;
-                }
-              }
-            }
-           if( num ===len2 ) {
-              arr.push(collection[i]);
-        }
-     }
-     return arr;
-}
-
-//test
-where([{ &quot;a&quot;: 1, &quot;b&quot;: 2 }, { &quot;a&quot;: 1 }, { &quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: 2 }], { &quot;a&quot;: 1, &quot;b&quot;: 2 });
-</code></pre><ul>
-<li>可以看到上述代码用了“无数”个for循环和if-else判断，缺少注释。</li>
-</ul>
-<p>code2:</p>
-<pre><code>function where(collection, source) {
-      var keys = Object.keys(source);   //获得source的key数组
-      return collection.filter(function(obj){  //筛选出使keys满足断言函数的对象元素
-        return  keys.every(function(e){ //断言函数判断obj是否包含所有source的键值对
-              return obj.hasOwnProperty(e) &amp;&amp; obj[e] === source[e];
-        });
-      });
-}
-
-//test
-where([{ &quot;a&quot;: 1, &quot;b&quot;: 2 }, { &quot;a&quot;: 1 }, { &quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: 2 }], { &quot;a&quot;: 1, &quot;b&quot;: 2 });
-</code></pre><ul>
-<li>code2 明显精简了许多，增加了必要的注释。</li>
-<li>采用逆向思维解此题：collection数组中筛选符合一定条件的对象元素返回 &lt;= 设计合适的断言函数 &lt;= 采用逻辑与表达式来对每个键值对进行判断。</li>
-</ul>
-<h4 id="2-Pig-Latin"><a href="#2-Pig-Latin" class="headerlink" title="2)Pig Latin"></a>2)Pig Latin</h4><blockquote>
-<p><img src="http://ocbao1wc2.bkt.clouddn.com/20161011suanfa_piglatin-expl.jpg" alt="什么是Pig Latin?"></p>
-</blockquote>
-<p>题目：</p>
-<p><img src="http://ocbao1wc2.bkt.clouddn.com/20161011suanfa_piglatin.jpg" alt="Pig Lation题目"></p>
-<p>code1：</p>
-<pre><code>function translate(str) {
-      var letters = str.split(&quot;&quot;);
-      var newStr = &quot;&quot;;
-      for(var i = 0, len = letters.length; i &lt; len; i++) {
-           if(&quot;aeiou&quot;.indexOf(letters[i]) !== -1) {
-            var index = i;
-              if (index === 0) {
-            letters.push(&quot;way&quot;);
-            newStr = letters.join(&quot;&quot;);       
-         } else {
-            var change = str.substr(0,index);
-                newStr = str.substr(index) + change + &quot;ay&quot;;
-        }
-        break;
-         }    
-      }
-    return newStr;
-}
-
-//test
-translate(&quot;glove&quot;);
-</code></pre><p>code2:</p>
-<pre><code>function translate(str) {
-      var newStr = &quot;&quot;;
-      var index = str.search(/[aoeiu]/);  //获得第一个元音字母的索引值，并根据索引值是否为0来判断返回什么样的值：
-      return index === 0 ? str + &quot;way&quot; : str.substr(index) + str.substr(0,index) +&quot;ay&quot;;
-}
-
-//test
-translate(&quot;paragraphs&quot;);
-</code></pre><ul>
-<li>code2 完爆 code1 ！</li>
-</ul>
-<h3 id="3、小结"><a href="#3、小结" class="headerlink" title="3、小结"></a>3、小结</h3><p>本文篇幅有限，其它题目不再介绍。</p>
-<p>通过完成FCC算法编程题，对之前在犀牛书中看到但是忽视或者忘记的细节进行了回忆与巩固，同时锻炼了逻辑思考能力，收获颇多！</p>
-<hr>
-<p>以上。 2016.10.11</p>
-<hr>
-<p>update1:  2016-10-12 00:27  修改部分错误，删减调整文字。<br>update2:  2016-10-15 10:26  修改2.1中关于闭包的错误描述。 </p>
-
+        <p class="article-more-link">
+          <a href="/2016/10/11/FCC算法编程题目小记/#more">Read More</a>
+        </p>
       
-    </div>
+    
+  
+</div>
     <footer class="article-footer">
       <a data-url="http://wemi.tech/2016/10/11/FCC算法编程题目小记/" data-id="ciu5ofudi0001sgj5r2fhusi1" class="article-share-link">Share</a>
       
@@ -237,45 +135,19 @@ translate(&quot;paragraphs&quot;);
 
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+<div class="article-entry" itemprop="articleBody">
+  
+    
+    
+      <h2 id="一、工具选择"><a href="#一、工具选择" class="headerlink" title="一、工具选择"></a>一、工具选择</h2><ul>
       
-        <h2 id="一、工具选择"><a href="#一、工具选择" class="headerlink" title="一、工具选择"></a>一、工具选择</h2><ul>
-<li><p>建站工具: <a href="http://hexo.io" target="_blank" rel="external">hexo.io</a></p>
-</li>
-<li><p>虚拟主机: <a href="http://github.com" target="_blank" rel="external">github.com</a></p>
-</li>
-<li><p>域名注册: <a href="http://west.cn" target="_blank" rel="external">west.cn</a></p>
-</li>
-<li><p>云服务商(图片存储): <a href="http://qiniu.com" target="_blank" rel="external">qiniu.com</a></p>
-</li>
-<li><p>Markdown编辑器： <a href="https://atom.io/" target="_blank" rel="external">Atom</a></p>
-</li>
-</ul>
-<h2 id="二、使用指南"><a href="#二、使用指南" class="headerlink" title="二、使用指南"></a>二、使用指南</h2><p> 1.使用Hexo + GithubPages 新建一个静态博客，并绑定<a href="http://wemi.tech">域名</a>。参考链接：<a href="https://segmentfault.com/a/1190000004947261" target="_blank" rel="external">点击</a></p>
-<p> 2.申请七牛云账号，随后开通文件存储空间(公开)，目前可以免费获得一个测试域名。如下图所示(若看不清细节，请右键单独打开图片)：</p>
-<p><img src="http://ocbao1wc2.bkt.clouddn.com/20161008tuchuang_ceshiyuming.jpg" alt="测试账号示意"></p>
-<p> 3.在博客所在github repo中新建文件夹“qiniuimgbed”用于存放文章相关图片，为方便管理，图片按 “20161008XXX_XXX.jpg” 形式命名，其中 “_“ 前为前缀命名，包含文章发布时间和文章名称(简写，并与其它图片一致)，”_“后为图片简称(与同一文章的其它图片区分)。如下图所示：</p>
-<p><img src="http://ocbao1wc2.bkt.clouddn.com/20161008tuchuang_wenjianjia.jpg" alt="新建文件夹"></p>
-<p> 4、在七牛云空间中设置镜像源地址。按下图所示操作即可：</p>
-<p><img src="http://ocbao1wc2.bkt.clouddn.com/20161008tuchuang_jiangxiang1.jpg" alt="设置镜像源地址"></p>
-<p><img src="http://ocbao1wc2.bkt.clouddn.com/20161008tuchuang_jiangxiang2.jpg" alt="设置镜像源地址"></p>
-<p> 5、每次写文章时按下列步骤操作：</p>
-<p> 1). 写好文本</p>
-<p> 2). 根据内容添加图片或截图至本地”qiniuimgbed”文件夹，同时按规则命名图片文件</p>
-<p> 3). 在MD文档中添加 七牛云前缀地址+图片名的图片URL。如：</p>
-<pre><code>http://ocbao1wc2.bkt.clouddn.com/20161008tuchuang_jiangxiang2.jpg
-</code></pre><p> 4). deploy文章至github服务器即可。</p>
-<h2 id="三、-工作原理"><a href="#三、-工作原理" class="headerlink" title="三、 工作原理"></a>三、 工作原理</h2><ul>
-<li><p>在网络中首次访问该文章时，客户端(浏览器等)会根据文档图片url访问七牛云获取图片资源;</p>
-</li>
-<li><p>很明显七牛云中并没有相关图片，于是会根据镜像源地址访问随文档一起push至github中的图片，提供给客户端的同时会备份至相应绑定的存储空间;</p>
-</li>
-<li><p>下一次再访问该文章时，则可从七牛云服务器中直接获取资源，从而提升图片资源的访问速度。</p>
-</li>
-</ul>
-
+        <p class="article-more-link">
+          <a href="/2016/10/08/如何使用在线图床/#more">Read More</a>
+        </p>
       
-    </div>
+    
+  
+</div>
     <footer class="article-footer">
       <a data-url="http://wemi.tech/2016/10/08/如何使用在线图床/" data-id="ciu5ofudi0000sgj5ikj1mn2q" class="article-share-link">Share</a>
       
