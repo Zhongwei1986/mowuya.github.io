@@ -9,6 +9,17 @@ body:after {
 body:after {
   clear: both;
 }
+#comments {
+  padding: 20px;
+  background: #272822;
+  -webkit-box-shadow: 1px 2px 3px #ddd;
+  box-shadow: 1px 2px 3px #ddd;
+  margin-bottom: 50px;
+}
+#comments .title {
+  font-weight: normal;
+  margin-bottom: 15px;
+}
 html,
 body,
 div,
@@ -942,16 +953,15 @@ a.article-title:hover {
   margin: 0 auto;
 }
 #comments {
-  background: #fff;
+  padding: 20px;
+  background: #272822;
   -webkit-box-shadow: 1px 2px 3px #ddd;
   box-shadow: 1px 2px 3px #ddd;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  margin: 50px 0;
+  margin-bottom: 50px;
 }
-#comments a {
-  color: #258fb8;
+#comments .title {
+  font-weight: normal;
+  margin-bottom: 15px;
 }
 .archives-wrap {
   margin: 50px 0;
