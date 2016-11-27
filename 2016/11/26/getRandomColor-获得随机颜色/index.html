@@ -5,28 +5,19 @@
   
   <title>getRandomColor()-获得随机颜色 | Zhongwei&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="此前在FCC前端开发项目中有一个弹幕APP中的JS代码有这样一段代码：
-var getRandomColor = function() {
-        return &amp;apos;#&amp;apos; + (function(h) {
-            return new Array(7 - h.length).join(&amp;quot;0&amp;quot;) + h
-        })((Math.">
+  <meta name="description" content="[TOC]
+此前在FCC前端开发项目中有一个弹幕APP中的JS代码有这样一段代码：12345var getRandomColor = function() &amp;#123;     return &apos;#&apos; + (function(h) &amp;#123;	                return new Array(7 - h.length).join(&quot;0&quot;) + h	            &amp;#125">
 <meta property="og:type" content="article">
 <meta property="og:title" content="getRandomColor()-获得随机颜色">
 <meta property="og:url" content="http://wemi.tech/2016/11/26/getRandomColor-获得随机颜色/index.html">
 <meta property="og:site_name" content="Zhongwei's Blog">
-<meta property="og:description" content="此前在FCC前端开发项目中有一个弹幕APP中的JS代码有这样一段代码：
-var getRandomColor = function() {
-        return &amp;apos;#&amp;apos; + (function(h) {
-            return new Array(7 - h.length).join(&amp;quot;0&amp;quot;) + h
-        })((Math.">
-<meta property="og:updated_time" content="2016-11-27T11:49:03.870Z">
+<meta property="og:description" content="[TOC]
+此前在FCC前端开发项目中有一个弹幕APP中的JS代码有这样一段代码：12345var getRandomColor = function() &amp;#123;     return &apos;#&apos; + (function(h) &amp;#123;	                return new Array(7 - h.length).join(&quot;0&quot;) + h	            &amp;#125">
+<meta property="og:updated_time" content="2016-11-27T12:35:35.702Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="getRandomColor()-获得随机颜色">
-<meta name="twitter:description" content="此前在FCC前端开发项目中有一个弹幕APP中的JS代码有这样一段代码：
-var getRandomColor = function() {
-        return &amp;apos;#&amp;apos; + (function(h) {
-            return new Array(7 - h.length).join(&amp;quot;0&amp;quot;) + h
-        })((Math.">
+<meta name="twitter:description" content="[TOC]
+此前在FCC前端开发项目中有一个弹幕APP中的JS代码有这样一段代码：12345var getRandomColor = function() &amp;#123;     return &apos;#&apos; + (function(h) &amp;#123;	                return new Array(7 - h.length).join(&quot;0&quot;) + h	            &amp;#125">
   
     <link rel="alternate" href="/atom.xml" title="Zhongwei&#39;s Blog" type="application/atom+xml">
   
@@ -105,52 +96,41 @@ var getRandomColor = function() {
   
     
     
-      <p>此前在FCC前端开发项目中有一个<a href="https://codepen.io/Zhongwei1986/full/dXLBdr/" target="_blank" rel="external">弹幕APP</a>中的JS代码有这样一段代码：</p>
-<pre><code>var getRandomColor = function() {
-        return &apos;#&apos; + (function(h) {
-            return new Array(7 - h.length).join(&quot;0&quot;) + h
-        })((Math.random() * 0x1000000 &lt;&lt; 0).toString(16))
-    }
-</code></pre><p>这段代码的作用是声明一个函数getRandomColor用于获取随机颜色，仔细阅读这个函数可以得到以下知识点：</p>
-<h2 id="Math-random"><a href="#Math-random" class="headerlink" title="Math.random()"></a>Math.random()</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><blockquote>
-<p>概述（<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/random" target="_blank" rel="external">MDN文档</a>）<br>Math.random() 函数返回 [0-1) 的浮点值伪随机数（大于等于0，小于1）。</p>
-<p>此函数的随机数生成器和java一样以当前时间为随机数种子。</p>
+      <p>[TOC]</p>
+<p>此前在FCC前端开发项目中有一个<a href="https://codepen.io/Zhongwei1986/full/dXLBdr/" target="_blank" rel="external">弹幕APP</a>中的JS代码有这样一段代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> getRandomColor = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">     <span class="keyword">return</span> <span class="string">'#'</span> + (<span class="function"><span class="keyword">function</span>(<span class="params">h</span>) </span>&#123;</div><div class="line">	                <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">7</span> - h.length).join(<span class="string">"0"</span>) + h</div><div class="line">	            &#125;)((<span class="built_in">Math</span>.random() * <span class="number">0x1000000</span> &lt;&lt; <span class="number">0</span>).toString(<span class="number">16</span>))</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>这段代码的作用是声明一个函数getRandomColor用于获取随机颜色，仔细阅读这个函数可以得到以下知识点：</p>
+<h2 id="1-Math-random"><a href="#1-Math-random" class="headerlink" title="1. Math.random()"></a>1. Math.random()</h2><h3 id="a-定义"><a href="#a-定义" class="headerlink" title="a. 定义"></a>a. 定义</h3><blockquote>
+<p>概述（<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/random" target="_blank" rel="external">MDN文档</a>）<br>Math.random() 函数返回 [0-1) 的浮点值伪随机数（大于等于0，小于1）。<br>此函数的随机数生成器和java一样以当前时间为随机数种子。</p>
 </blockquote>
-<h3 id="用法举例"><a href="#用法举例" class="headerlink" title="用法举例"></a>用法举例</h3><ol>
+<h3 id="b-用法举例"><a href="#b-用法举例" class="headerlink" title="b. 用法举例"></a>b. 用法举例</h3><ul>
 <li><p>返回一个大于等于0，小于1的伪随机数</p>
-<pre><code>function getRandom(){
-    return Math.random();
-}
-</code></pre></li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRandom</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.random();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 <li><p>返回一个介于min和max之间的随机数</p>
-<pre><code>function getRandomRange(min, max){
-    return Math.random()*(max - min) + min;
-}
-</code></pre></li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRandomRange</span>(<span class="params">min, max</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.random()*(max - min) + min;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 <li><p>返回一个介于min和max之间的整型随机数</p>
-<pre><code>function
-</code></pre><h2 id="16进制数"><a href="#16进制数" class="headerlink" title="16进制数"></a>16进制数</h2><p>0x在JS中表示16进制数前缀，0x1000000</p>
-<h2 id="位操作"><a href="#位操作" class="headerlink" title="位操作"></a>位操作</h2><h2 id="new-Array-num-join-“0”-前置num-1个0"><a href="#new-Array-num-join-“0”-前置num-1个0" class="headerlink" title="new Array(num).join(“0”) 前置num-1个0"></a>new Array(num).join(“0”) 前置num-1个0</h2></li>
-</ol>
-<ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRandomInt</span>(<span class="params">min, max</span>)</span>&#123;</div><div class="line">    <span class="comment">//确保结果在[min,max]范围内</span></div><div class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*(max - min + <span class="number">1</span>) + min);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="2-16进制数（hex）"><a href="#2-16进制数（hex）" class="headerlink" title="2. 16进制数（hex）"></a>2. 16进制数（hex）</h2><p>0x在JS中表示16进制数前缀，0x1000000</p>
+<h2 id="3-位操作"><a href="#3-位操作" class="headerlink" title="3. 位操作"></a>3. 位操作</h2><h2 id="4-Array-join"><a href="#4-Array-join" class="headerlink" title="4. Array.join()"></a>4. Array.join()</h2><ul>
 <li>Array（7-h.length）.join(“0”) + h 可以确保结果为</li>
 </ul>
 <blockquote>
 <p>扩展 new Array(num).join(“*”) 可前置任何前缀来保证结果位数为定值</p>
-<p>1</p>
-<p>2</p>
 </blockquote>
 
     
   
 </div>
     <footer class="article-footer">
-      <a data-url="http://wemi.tech/2016/11/26/getRandomColor-获得随机颜色/" data-id="ciw0mhfqu0001twj5aoeypz3h" class="article-share-link">Share</a>
+      <a data-url="http://wemi.tech/2016/11/26/getRandomColor-获得随机颜色/" data-id="ciw0mn3wh0006noj50tw3hh17" class="article-share-link">Share</a>
       
         <a href="http://wemi.tech/2016/11/26/getRandomColor-获得随机颜色/#disqus_thread" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS，函数/">JS，函数</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数/">函数</a></li></ul>
 
     </footer>
   </div>
@@ -193,7 +173,7 @@ var getRandomColor = function() {
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS，函数/">JS，函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图床/">图床</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数/">函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图床/">图床</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
